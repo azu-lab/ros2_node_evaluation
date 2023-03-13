@@ -1,0 +1,8 @@
+input/odometry: input_odometry
+output/trajectory: output_trajectory
+input/lane_driving/trajectory: input_lane_driving_trajectory
+input/route: input_route
+is_parking_completed: is_parking_completed
+input/lanelet_map: input_lanelet_map
+output/scenario: output_scenario
+input/parking/trajectory: input_parking_trajectory

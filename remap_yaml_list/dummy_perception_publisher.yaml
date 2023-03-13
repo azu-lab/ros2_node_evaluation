@@ -1,0 +1,6 @@
+input/object: dummy_perception_publisher/object_info
+output/dynamic_object: /perception/object_recognition/detection/labeled_clusters
+output/points_raw: /perception/obstacle_segmentation/pointcloud
+input/reset: input/reset
+output/objects_pose: debug/object_pose
+output/dynamic_object: /perception/object_recognition/detection/objects_with_feature

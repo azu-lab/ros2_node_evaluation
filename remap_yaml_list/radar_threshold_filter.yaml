@@ -1,0 +1,2 @@
+~/output/radar: output/threshold_filtered_radar
+~/input/radar: input/radar

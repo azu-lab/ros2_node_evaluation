@@ -1,0 +1,3 @@
+output/short_range_object: short_range_object
+output/long_range_object: long_range_object
+input/object: object

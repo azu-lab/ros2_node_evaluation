@@ -1,0 +1,3 @@
+output: voxel_grid_downsample/pointcloud
+input: measurement_range/pointcloud
+input: /input_topic

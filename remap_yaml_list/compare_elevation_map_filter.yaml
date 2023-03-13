@@ -1,0 +1,2 @@
+input/elevation_map: map
+output: map_filtered/pointcloud

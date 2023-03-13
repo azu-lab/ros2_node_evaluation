@@ -1,0 +1,3 @@
+~/output: objects
+~/input/tracked_objects: /perception/object_recognition/tracking/objects
+~/input/initial_objects: /perception/object_recognition/detection/clustering/objects_with_feature

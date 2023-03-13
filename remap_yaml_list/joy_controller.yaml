@@ -1,0 +1,11 @@
+output/external_control_command: /api/external/set/command/$(var external_cmd_source)/control
+output/turn_signal: /api/external/set/command/$(var external_cmd_source)/turn_signal
+output/gate_mode: /control/gate_mode_cmd
+output/heartbeat: /api/external/set/command/$(var external_cmd_source)/heartbeat
+input/odometry: /localization/kinematic_state
+service/autoware_engage: /api/external/set/engage
+output/shift: /api/external/set/command/$(var external_cmd_source)/shift
+output/control_command: /external/$(var external_cmd_source)/joy/control_cmd
+service/emergency_stop: /api/autoware/set/emergency
+input/joy: /joy
+output/vehicle_engage: /vehicle/engage

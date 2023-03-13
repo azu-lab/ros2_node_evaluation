@@ -1,0 +1,5 @@
+input/obstacle_pointcloud: /perception/obstacle_segmentation/pointcloud
+input/lanelet_map_bin: /map/vector_map
+input/odometry: /localization/kinematic_state
+input/reference_trajectory: /planning/scenario_planning/trajectory
+input/predicted_trajectory: /control/trajectory_follower/predicted_trajectory

@@ -1,0 +1,4 @@
+~/output/velocity_limit/clear: /planning/scenario_planning/clear_velocity_limit
+~/output/velocity_limit: /planning/scenario_planning/max_velocity_candidates
+~/input/mrm/comfortable_stop/operate: /system/mrm/comfortable_stop/operate
+~/output/mrm/comfortable_stop/status: /system/mrm/comfortable_stop/status

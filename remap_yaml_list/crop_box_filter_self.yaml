@@ -1,0 +1,2 @@
+output: self_cropped/pointcloud_ex
+input: pointcloud_raw_ex

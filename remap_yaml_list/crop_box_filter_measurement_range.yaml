@@ -1,0 +1,2 @@
+input: /input/pointcloud
+output: measurement_range/pointcloud

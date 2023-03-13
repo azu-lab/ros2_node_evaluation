@@ -1,0 +1,3 @@
+map: /map/pointcloud_map
+output: compare_map_filtered/pointcloud
+input: vector_map_inside_area_filtered/pointcloud

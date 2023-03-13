@@ -1,0 +1,2 @@
+input: vector_map_filtered/pointcloud
+output: pointcloud

@@ -1,0 +1,4 @@
+input/velocity_limit_from_api: /planning/scenario_planning/max_velocity_default
+output/external_velocity_limit: /planning/scenario_planning/max_velocity
+input/velocity_limit_from_internal: /planning/scenario_planning/max_velocity_candidates
+input/velocity_limit_clear_command_from_internal: /planning/scenario_planning/clear_velocity_limit

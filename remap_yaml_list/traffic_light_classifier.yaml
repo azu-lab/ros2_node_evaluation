@@ -1,0 +1,6 @@
+~/input/rois: rois
+~/output/traffic_signals: ~/traffic_signals
+~/input/rois: ~/rois
+~/output/traffic_signals: classified/traffic_signals
+~/input/image: /input/image
+~/input/image: ~/image_raw

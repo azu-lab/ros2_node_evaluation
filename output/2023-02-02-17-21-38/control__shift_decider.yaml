@@ -1,0 +1,11 @@
+/control/shift_decider:
+  ros__parameters:
+    park_on_goal: true
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    use_sim_time: false

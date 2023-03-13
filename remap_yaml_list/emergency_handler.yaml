@@ -1,0 +1,11 @@
+~/input/control_mode: /vehicle/status/control_mode
+~/output/mrm/state: /system/fail_safe/mrm_state
+~/input/mrm/comfortable_stop/status: /system/mrm/comfortable_stop/status
+~/input/prev_control_command: /control/command/control_cmd
+~/input/mrm/emergency_stop/status: /system/mrm/emergency_stop/status
+~/output/mrm/comfortable_stop/operate: /system/mrm/comfortable_stop/operate
+~/output/hazard: /system/emergency/hazard_lights_cmd
+~/output/mrm/emergency_stop/operate: /system/mrm/emergency_stop/operate
+~/input/hazard_status: /system/emergency/hazard_status
+~/output/gear: /system/emergency/gear_cmd
+~/input/odometry: /localization/kinematic_state

@@ -1,0 +1,3 @@
+debug/stop_flag: debug/stop_flag
+input/odom: ekf_odom
+output/odom: stop_filter_odom

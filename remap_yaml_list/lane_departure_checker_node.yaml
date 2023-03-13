@@ -1,0 +1,4 @@
+~/input/lanelet_map_bin: /map/vector_map
+~/input/route: /planning/mission_planning/route
+~/input/reference_trajectory: /planning/scenario_planning/trajectory
+~/input/odometry: /localization/kinematic_state

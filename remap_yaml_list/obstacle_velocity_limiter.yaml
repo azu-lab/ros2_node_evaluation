@@ -1,0 +1,11 @@
+~/input/map: /map/vector_map
+~/input/trajectory: /planning/scenario_planning/scenario_selector/trajectory
+~/input/obstacle_pointcloud: /perception/obstacle_segmentation/pointcloud
+~/output/debug_markers: ~/output/debug_markers
+~/output/debug_markers: debug_markers
+~/output/trajectory: ~/output/trajectory
+~/output/trajectory: obstacle_velocity_limiter/trajectory
+~/input/occupancy_grid: /perception/occupancy_grid_map/map
+~/input/dynamic_obstacles: /perception/object_recognition/objects
+~/input/trajectory: obstacle_avoidance_planner/trajectory
+~/input/odometry: /localization/kinematic_state

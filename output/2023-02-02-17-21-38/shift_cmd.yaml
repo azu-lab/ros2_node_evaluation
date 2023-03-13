@@ -1,0 +1,1932 @@
+named_paths:
+- path_name: target_path
+  node_chain:
+  - node_name: /control/shift_decider
+    publish_topic_name: /control/shift_decider/gear_cmd
+    subscribe_topic_name: UNDEFINED
+  - node_name: /control/vehicle_cmd_gate
+    publish_topic_name: UNDEFINED
+    subscribe_topic_name: /control/shift_decider/gear_cmd
+executors:
+- executor_type: single_threaded_executor
+  executor_name: executor_4
+  callback_group_names:
+  - /control/shift_decider/callback_group_0
+- executor_type: single_threaded_executor
+  executor_name: executor_5
+  callback_group_names:
+  - /control/vehicle_cmd_gate/callback_group_0
+- executor_type: single_threaded_executor
+  executor_name: executor_6
+  callback_group_names: []
+nodes:
+- node_name: /caret_session_node
+  callback_groups: []
+  publishes:
+  - topic_name: /caret/end_record
+    callback_names:
+    - UNDEFINED
+  - topic_name: /caret/start_record
+    callback_names:
+    - UNDEFINED
+- node_name: /control/shift_decider
+  callback_groups:
+  - callback_group_type: mutually_exclusive
+    callback_group_name: /control/shift_decider/callback_group_0
+    callback_names:
+    - /control/shift_decider/callback_0
+    - /control/shift_decider/callback_1
+    - /control/shift_decider/callback_2
+  callbacks:
+  - callback_name: /control/shift_decider/callback_0
+    callback_type: timer_callback
+    period_ns: 100000000
+    symbol: std::_Bind<void (ShiftDecider::*(ShiftDecider*))()>
+  - callback_name: /control/shift_decider/callback_1
+    callback_type: subscription_callback
+    topic_name: /control/trajectory_follower/control_cmd
+    symbol: std::_Bind<void (ShiftDecider::*(ShiftDecider*, std::_Placeholder<1>))(std::shared_ptr<autoware_auto_control_msgs::msg::AckermannControlCommand_<std::allocator<void>
+      > >)>
+  - callback_name: /control/shift_decider/callback_2
+    callback_type: subscription_callback
+    topic_name: /autoware/state
+    symbol: std::_Bind<void (ShiftDecider::*(ShiftDecider*, std::_Placeholder<1>))(std::shared_ptr<autoware_auto_system_msgs::msg::AutowareState_<std::allocator<void>
+      > >)>
+  variable_passings:
+  - callback_name_write: UNDEFINED
+    callback_name_read: UNDEFINED
+  publishes:
+  - topic_name: /control/shift_decider/gear_cmd
+    callback_names:
+    - UNDEFINED
+  subscribes:
+  - topic_name: /autoware/state
+    callback_name: /control/shift_decider/callback_2
+  - topic_name: /control/trajectory_follower/control_cmd
+    callback_name: /control/shift_decider/callback_1
+  message_contexts:
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/state
+    publisher_topic_name: /control/shift_decider/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/shift_decider/gear_cmd
+- node_name: /control/vehicle_cmd_gate
+  callback_groups:
+  - callback_group_type: mutually_exclusive
+    callback_group_name: /control/vehicle_cmd_gate/callback_group_0
+    callback_names:
+    - /control/vehicle_cmd_gate/callback_00
+    - /control/vehicle_cmd_gate/callback_01
+    - /control/vehicle_cmd_gate/callback_02
+    - /control/vehicle_cmd_gate/callback_03
+    - /control/vehicle_cmd_gate/callback_04
+    - /control/vehicle_cmd_gate/callback_05
+    - /control/vehicle_cmd_gate/callback_06
+    - /control/vehicle_cmd_gate/callback_07
+    - /control/vehicle_cmd_gate/callback_08
+    - /control/vehicle_cmd_gate/callback_09
+    - /control/vehicle_cmd_gate/callback_10
+    - /control/vehicle_cmd_gate/callback_11
+    - /control/vehicle_cmd_gate/callback_12
+    - /control/vehicle_cmd_gate/callback_13
+    - /control/vehicle_cmd_gate/callback_14
+    - /control/vehicle_cmd_gate/callback_15
+    - /control/vehicle_cmd_gate/callback_16
+    - /control/vehicle_cmd_gate/callback_17
+    - /control/vehicle_cmd_gate/callback_18
+    - /control/vehicle_cmd_gate/callback_19
+    - /control/vehicle_cmd_gate/callback_20
+  callbacks:
+  - callback_name: /control/vehicle_cmd_gate/callback_00
+    callback_type: timer_callback
+    period_ns: 1000000000
+    symbol: std::_Bind<void (diagnostic_updater::Updater::*(diagnostic_updater::Updater*))()>
+  - callback_name: /control/vehicle_cmd_gate/callback_01
+    callback_type: timer_callback
+    period_ns: 100000000
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*))()>
+  - callback_name: /control/vehicle_cmd_gate/callback_02
+    callback_type: timer_callback
+    period_ns: 100000000
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*))()>
+  - callback_name: /control/vehicle_cmd_gate/callback_03
+    callback_type: subscription_callback
+    topic_name: /external/selected/heartbeat
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<tier4_external_api_msgs::msg::Heartbeat_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_04
+    callback_type: subscription_callback
+    topic_name: /control/gate_mode_cmd
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<tier4_control_msgs::msg::GateMode_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_05
+    callback_type: subscription_callback
+    topic_name: /autoware/engage
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<autoware_auto_vehicle_msgs::msg::Engage_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_06
+    callback_type: subscription_callback
+    topic_name: /vehicle/status/steering_status
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<autoware_auto_vehicle_msgs::msg::SteeringReport_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_07
+    callback_type: subscription_callback
+    topic_name: /system/operation_mode/state
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_adapi_v1_msgs::msg::OperationModeState_<std::allocator<void>
+      > >)#1}
+  - callback_name: /control/vehicle_cmd_gate/callback_08
+    callback_type: subscription_callback
+    topic_name: /system/fail_safe/mrm_state
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<autoware_adapi_v1_msgs::msg::MrmState_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_09
+    callback_type: subscription_callback
+    topic_name: /control/input/gear_status
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::GearReport_<std::allocator<void>
+      > >)#2}
+  - callback_name: /control/vehicle_cmd_gate/callback_10
+    callback_type: subscription_callback
+    topic_name: /control/trajectory_follower/control_cmd
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<autoware_auto_control_msgs::msg::AckermannControlCommand_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_11
+    callback_type: subscription_callback
+    topic_name: /planning/turn_indicators_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::TurnIndicatorsCommand_<std::allocator<void>
+      > const>)#3}
+  - callback_name: /control/vehicle_cmd_gate/callback_12
+    callback_type: subscription_callback
+    topic_name: /planning/hazard_lights_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::HazardLightsCommand_<std::allocator<void>
+      > const>)#4}
+  - callback_name: /control/vehicle_cmd_gate/callback_13
+    callback_type: subscription_callback
+    topic_name: /control/shift_decider/gear_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::GearCommand_<std::allocator<void>
+      > const>)#5}
+  - callback_name: /control/vehicle_cmd_gate/callback_14
+    callback_type: subscription_callback
+    topic_name: /external/selected/control_cmd
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<autoware_auto_control_msgs::msg::AckermannControlCommand_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_15
+    callback_type: subscription_callback
+    topic_name: /external/selected/turn_indicators_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::TurnIndicatorsCommand_<std::allocator<void>
+      > const>)#6}
+  - callback_name: /control/vehicle_cmd_gate/callback_16
+    callback_type: subscription_callback
+    topic_name: /external/selected/hazard_lights_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::HazardLightsCommand_<std::allocator<void>
+      > const>)#7}
+  - callback_name: /control/vehicle_cmd_gate/callback_17
+    callback_type: subscription_callback
+    topic_name: /external/selected/gear_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::GearCommand_<std::allocator<void>
+      > const>)#8}
+  - callback_name: /control/vehicle_cmd_gate/callback_18
+    callback_type: subscription_callback
+    topic_name: /system/emergency/control_cmd
+    symbol: std::_Bind<void (vehicle_cmd_gate::VehicleCmdGate::*(vehicle_cmd_gate::VehicleCmdGate*,
+      std::_Placeholder<1>))(std::shared_ptr<autoware_auto_control_msgs::msg::AckermannControlCommand_<std::allocator<void>
+      > const>)>
+  - callback_name: /control/vehicle_cmd_gate/callback_19
+    callback_type: subscription_callback
+    topic_name: /system/emergency/hazard_lights_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::HazardLightsCommand_<std::allocator<void>
+      > const>)#9}
+  - callback_name: /control/vehicle_cmd_gate/callback_20
+    callback_type: subscription_callback
+    topic_name: /system/emergency/gear_cmd
+    symbol: vehicle_cmd_gate::VehicleCmdGate::VehicleCmdGate(rclcpp::NodeOptions const&)::{lambda(std::shared_ptr<autoware_auto_vehicle_msgs::msg::GearCommand_<std::allocator<void>
+      > const>)#10}
+  variable_passings:
+  - callback_name_write: UNDEFINED
+    callback_name_read: UNDEFINED
+  publishes:
+  - topic_name: /api/autoware/get/emergency
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/autoware/get/engage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/emergency_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/gear_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/hazard_lights_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/turn_indicators_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/current_gate_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/vehicle_cmd_gate/is_paused
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/vehicle_cmd_gate/is_start_requested
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/vehicle_cmd_gate/operation_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /diagnostics
+    callback_names:
+    - UNDEFINED
+  - topic_name: /service_log
+    callback_names:
+    - UNDEFINED
+  subscribes:
+  - topic_name: /autoware/engage
+    callback_name: /control/vehicle_cmd_gate/callback_05
+  - topic_name: /control/gate_mode_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_04
+  - topic_name: /control/input/gear_status
+    callback_name: /control/vehicle_cmd_gate/callback_09
+  - topic_name: /control/shift_decider/gear_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_13
+  - topic_name: /control/trajectory_follower/control_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_10
+  - topic_name: /external/selected/control_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_14
+  - topic_name: /external/selected/gear_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_17
+  - topic_name: /external/selected/hazard_lights_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_16
+  - topic_name: /external/selected/heartbeat
+    callback_name: /control/vehicle_cmd_gate/callback_03
+  - topic_name: /external/selected/turn_indicators_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_15
+  - topic_name: /planning/hazard_lights_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_12
+  - topic_name: /planning/turn_indicators_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_11
+  - topic_name: /system/emergency/control_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_18
+  - topic_name: /system/emergency/gear_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_20
+  - topic_name: /system/emergency/hazard_lights_cmd
+    callback_name: /control/vehicle_cmd_gate/callback_19
+  - topic_name: /system/fail_safe/mrm_state
+    callback_name: /control/vehicle_cmd_gate/callback_08
+  - topic_name: /system/operation_mode/state
+    callback_name: /control/vehicle_cmd_gate/callback_07
+  - topic_name: /vehicle/status/steering_status
+    callback_name: /control/vehicle_cmd_gate/callback_06
+  message_contexts:
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /autoware/engage
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/gate_mode_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/input/gear_status
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/shift_decider/gear_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /control/trajectory_follower/control_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/control_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/gear_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/hazard_lights_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/heartbeat
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /external/selected/turn_indicators_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/hazard_lights_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /planning/turn_indicators_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/control_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/gear_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/emergency/hazard_lights_cmd
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/fail_safe/mrm_state
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /system/operation_mode/state
+    publisher_topic_name: /service_log
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /api/autoware/get/emergency
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /api/autoware/get/engage
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/command/control_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/command/emergency_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/command/gear_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/command/hazard_lights_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/command/turn_indicators_cmd
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/current_gate_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/vehicle_cmd_gate/is_paused
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/vehicle_cmd_gate/is_start_requested
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /control/vehicle_cmd_gate/operation_mode
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /diagnostics
+  - context_type: UNDEFINED
+    subscription_topic_name: /vehicle/status/steering_status
+    publisher_topic_name: /service_log
+- node_name: /rosbag2_player
+  callback_groups: []
+  publishes:
+  - topic_name: /api/autoware/get/emergency
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/autoware/get/engage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/autoware/get/map/info/hash
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/autoware/get/observer
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/autoware/get/operator
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/autoware/get/velocity_limit
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/command/selected/control
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/command/selected/vehicle
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/cpu_usage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/diagnostics
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/door
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/emergency
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/engage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/fail_safe/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/map/info/hash
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/observer
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/operator
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/route
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/rtc_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/service
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/get/vehicle/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/local/control
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/local/heartbeat
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/local/shift
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/local/turn_signal
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/remote/control
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/remote/heartbeat
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/remote/shift
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/external/set/command/remote/turn_signal
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/iv_msgs/autoware/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/iv_msgs/perception/object_recognition/tracking/objects
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/iv_msgs/planning/scenario_planning/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/iv_msgs/vehicle/status/control_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/localization/initialization_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/motion/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/operation_mode/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/routing/route
+    callback_names:
+    - UNDEFINED
+  - topic_name: /api/routing/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /autoware/engage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /autoware/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/autoware/get/route
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/autoware/get/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/autoware/get/stop_speed_exceeded
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/lane_change/get/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/object_avoidance/get/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/prediction/get/objects
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/tmp/infrastructure_commands
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/tmp/virtual_traffic_light_states
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/traffic_light/get/nearest_traffic_signal
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/vehicle/get/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/vehicle/put/stop
+    callback_names:
+    - UNDEFINED
+  - topic_name: /awapi/vehicle/put/velocity
+    callback_names:
+    - UNDEFINED
+  - topic_name: /client_count
+    callback_names:
+    - UNDEFINED
+  - topic_name: /connected_clients
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/emergency_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/gear_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/hazard_lights_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/command/turn_indicators_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/current_gate_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/external_cmd_selector/current_selector_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/gate_mode_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/operation_mode_transition_manager/debug_info
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/shift_decider/gear_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lane_departure_checker_node/debug/deviation/lateral
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lane_departure_checker_node/debug/deviation/yaw
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lane_departure_checker_node/debug/deviation/yaw_deg
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lane_departure_checker_node/debug/marker_array
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lane_departure_checker_node/debug/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lateral/diagnostic
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/lateral/predicted_trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/longitudinal/diagnostic
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/trajectory_follower/longitudinal/slope_angle
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/vehicle_cmd_gate/is_paused
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/vehicle_cmd_gate/is_start_requested
+    callback_names:
+    - UNDEFINED
+  - topic_name: /control/vehicle_cmd_gate/operation_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /current_pose
+    callback_names:
+    - UNDEFINED
+  - topic_name: /diagnostics
+    callback_names:
+    - UNDEFINED
+  - topic_name: /diagnostics_agg
+    callback_names:
+    - UNDEFINED
+  - topic_name: /diagnostics_err
+    callback_names:
+    - UNDEFINED
+  - topic_name: /diagnostics_toplevel_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/selected/control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/selected/external_control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/selected/gear_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/selected/hazard_lights_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/selected/heartbeat
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/selected/turn_indicators_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /external/traffic_light_recognition/traffic_signals
+    callback_names:
+    - UNDEFINED
+  - topic_name: /initialpose
+    callback_names:
+    - UNDEFINED
+  - topic_name: /initialpose3d
+    callback_names:
+    - UNDEFINED
+  - topic_name: /joint_states
+    callback_names:
+    - UNDEFINED
+  - topic_name: /localization/acceleration
+    callback_names:
+    - UNDEFINED
+  - topic_name: /localization/initialization_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /localization/kinematic_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /localization/pose_estimator/monte_carlo_initial_pose_marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /localization/pose_twist_fusion_filter/pose
+    callback_names:
+    - UNDEFINED
+  - topic_name: /map/pointcloud_map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /map/vector_map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /map/vector_map_marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /occupancy_grid_map/concatenated/pointcloud
+    callback_names:
+    - UNDEFINED
+  - topic_name: /occupancy_grid_map/virtual_scan/laserscan
+    callback_names:
+    - UNDEFINED
+  - topic_name: /occupancy_grid_map/virtual_scan/pointcloud
+    callback_names:
+    - UNDEFINED
+  - topic_name: /occupancy_grid_map/virtual_scan/ray
+    callback_names:
+    - UNDEFINED
+  - topic_name: /occupancy_grid_map/virtual_scan/stixel
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/object_recognition/detection/labeled_clusters
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/object_recognition/detection/objects
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/object_recognition/detection/objects_with_feature
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/object_recognition/objects
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/object_recognition/prediction/maneuver
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/object_recognition/tracking/objects
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/obstacle_segmentation/pointcloud
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/occupancy_grid_map/map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/occupancy_grid_map/map_updates
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/traffic_light_recognition/debug/rois
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/traffic_light_recognition/traffic_light_map_based_detector/debug/markers
+    callback_names:
+    - UNDEFINED
+  - topic_name: /perception/traffic_light_recognition/traffic_signals
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/avoidance_left
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/avoidance_right
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/blind_spot
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/crosswalk
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/detection_area
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/intersection
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/lane_change_left
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/lane_change_right
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/no_stopping_area
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/occlusion_spot
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/pull_out
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/pull_over
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/traffic_light
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/cooperate_status/virtual_traffic_light
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/hazard_lights_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/mission_planning/checkpoint
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/mission_planning/echo_back_goal_pose
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/mission_planning/goal
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/mission_planning/route
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/mission_planning/route_marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/mission_planning/route_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/planning_diagnostics/planning_error_monitor/debug/marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/clear_velocity_limit
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/current_max_velocity
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/avoidance_debug_message_array
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lane_change_debug_message_array
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lanechange
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/lanefollowing
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/pullout
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/pullover
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/debug/sideshift
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/drivable_area_boundary
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/input/lateral_offset
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/output/path_candidate
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_path_planner/path_change_approval
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/blind_spot
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/blind_spot/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/crosswalk
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/crosswalk/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/detection_area
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/detection_area/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/intersection
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/intersection/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/merge_from_private
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/merge_from_private/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/no_stopping_area
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/no_stopping_area/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/occlusion_spot
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/occlusion_spot/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/path
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/stop_line
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/stop_line/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/traffic_light
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/virtual_traffic_light
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/virtual_traffic_light/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/walkway
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/debug/walkway/processing_time_ms
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/input/external_crosswalk_states
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/input/external_intersection_states
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/output/stop_reason
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/blind_spot
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/crosswalk
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/detection_area
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/intersection
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/merge_from_private
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/no_stopping_area
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/occlusion_spot
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/run_out
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/stop_line
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/traffic_light
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/virtual_traffic_light
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/behavior_velocity_planner/virtual_wall/walkway
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/debug/traffic_signal
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/path
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/behavior_planning/path_with_lane_id
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/lane_change_available
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/lane_change_candidate_path
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/lane_change_ready
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/debug_markers
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/area_with_objects
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/calculation_time
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/clearance_map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/eb_trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/extended_fixed_traj
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/extended_non_fixed_traj
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/mpt_fixed_traj
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/mpt_ref_traj
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/mpt_traj
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/object_clearance_map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/debug/virtual_wall
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/adaptive_cruise_control/debug_values
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/debug/marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/input/expand_stop_range
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/obstacle_stop/debug_values
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_stop_planner/virtual_wall
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_velocity_limiter/output/runtime_microseconds
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/obstacle_velocity_limiter/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/footprint
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/footprint_offset
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/footprint_recover_offset
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/debug/marker
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/motion_planning/surround_obstacle_checker/virtual_wall
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/obstacle_avoidance_approval
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/obstacle_avoidance_candidate_trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/obstacle_avoidance_ready
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/lane_driving/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/max_velocity
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/max_velocity_candidates
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/max_velocity_default
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/modified_goal
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/calculation_time
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/closest_acceleration
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/closest_jerk
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/closest_max_velocity
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/closest_merged_velocity
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/closest_velocity
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/backward_filtered_trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/forward_filtered_trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/merged_filtered_trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/trajectory_external_velocity_limited
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/trajectory_lateral_acc_filtered
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/trajectory_raw
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/trajectory_steering_rate_limited
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/debug/trajectory_time_resampled
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/distance_to_stopline
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/motion_velocity_smoother/stop_speed_exceeded
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/parking/costmap_generator/grid_map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/parking/costmap_generator/occupancy_grid
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/parking/freespace_planner/debug/partial_pose_array
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/parking/freespace_planner/debug/pose_array
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/parking/is_completed
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/parking/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/scenario
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/scenario_selector/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/status/infrastructure_commands
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/status/no_start_reason
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/status/stop_reason
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/status/stop_reasons
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/scenario_planning/trajectory
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/steering_factor/avoidance
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/steering_factor/intersection
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/steering_factor/lane_change
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/steering_factor/pull_out
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/steering_factor/pull_over
+    callback_names:
+    - UNDEFINED
+  - topic_name: /planning/turn_indicators_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /robot_description
+    callback_names:
+    - UNDEFINED
+  - topic_name: /sensing/gnss/pose_with_covariance
+    callback_names:
+    - UNDEFINED
+  - topic_name: /sensing/gnss/ublox/nav_sat_fix
+    callback_names:
+    - UNDEFINED
+  - topic_name: /sensing/lidar/concatenated/pointcloud
+    callback_names:
+    - UNDEFINED
+  - topic_name: /service_log
+    callback_names:
+    - UNDEFINED
+  - topic_name: /simulation/dummy_perception_publisher/object_info
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/control
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/localization
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/perception
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/planning
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/sensing
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/system
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/autonomous/vehicle
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/control
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/localization
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/map
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/perception
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/planning
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/sensing
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/system
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/component_state_monitor/component/launch/vehicle
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/emergency/control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/emergency/emergency_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/emergency/gear_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/emergency/hazard_lights_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/emergency/hazard_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/emergency_handler/output/control_command
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/fail_safe/mrm_state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/mrm/comfortable_stop/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/mrm/emergency_stop/status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/operation_mode/state
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/system_monitor/cpu_monitor/cpu_usage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /system/v2x/virtual_traffic_light_states
+    callback_names:
+    - UNDEFINED
+  - topic_name: /tf
+    callback_names:
+    - UNDEFINED
+  - topic_name: /tf_static
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/command/manual_control_cmd
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/command/manual_gear_command
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/engage
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/battery_charge
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/control_mode
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/door_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/gear_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/hazard_lights_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/steering_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/turn_indicators_status
+    callback_names:
+    - UNDEFINED
+  - topic_name: /vehicle/status/velocity_status
+    callback_names:
+    - UNDEFINED

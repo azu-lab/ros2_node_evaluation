@@ -1,0 +1,2 @@
+output: /output_clusters
+input: outlier_filter/pointcloud

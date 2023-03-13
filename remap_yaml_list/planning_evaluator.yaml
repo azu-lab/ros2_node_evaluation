@@ -1,0 +1,4 @@
+~/input/twist: /localization/twist
+~/input/objects: /perception/object_recognition/objects
+~/input/reference_trajectory: /planning/scenario_planning/lane_driving/motion_planning/obstacle_avoidance_planner/trajectory
+~/input/trajectory: /planning/scenario_planning/trajectory

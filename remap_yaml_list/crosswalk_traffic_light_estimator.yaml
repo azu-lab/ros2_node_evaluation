@@ -1,0 +1,4 @@
+~/input/classified/traffic_signals: classified/traffic_signals
+~/output/traffic_signals: traffic_signals
+~/input/vector_map: /map/vector_map
+~/input/route: /planning/mission_planning/route

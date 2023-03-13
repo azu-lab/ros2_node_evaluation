@@ -1,0 +1,4 @@
+~/input/control_cmd: /control/command/control_cmd
+~/input/steering: /vehicle/status/steering_status
+~/output/actuation_cmd: /control/command/actuation_cmd
+~/input/odometry: /localization/kinematic_state

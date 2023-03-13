@@ -1,0 +1,4 @@
+output/elevation_map: /map/elevation_map
+input/pointcloud_map: /map/pointcloud_map
+output/elevation_map: map
+input/vector_map: /map/vector_map

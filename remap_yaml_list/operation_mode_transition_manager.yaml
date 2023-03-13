@@ -1,0 +1,8 @@
+gate_operation_mode: /control/vehicle_cmd_gate/operation_mode
+control_mode_request: /control/control_mode_request
+control_cmd: /control/command/control_cmd
+control_mode_report: /vehicle/status/control_mode
+trajectory: /planning/scenario_planning/trajectory
+steering: /vehicle/status/steering_status
+is_autonomous_available: /control/is_autonomous_available
+kinematics: /localization/kinematic_state

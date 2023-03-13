@@ -1,0 +1,4 @@
+input: /input
+output: /output
+input/elevation_map: /input/elevation_map
+map: /map

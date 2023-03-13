@@ -1,0 +1,8 @@
+input/object: in_objects
+~/output/objects: /perception/object_recognition/detection/validation/obstacle_pointcloud_based/objects
+~/input/obstacle_pointcloud: /perception/obstacle_segmentation/pointcloud
+output/object: out_objects
+~/input/occupancy_grid_map: /perception/object_recognition/detection/validation/occupancy_grid_based/single_frame_occupancy_grid_map
+input/vector_map: /map/vector_map
+~/input/detected_objects: /perception/object_recognition/detection/objects
+~/output/objects: /perception/object_recognition/detection/validation/occupancy_grid_based/objects

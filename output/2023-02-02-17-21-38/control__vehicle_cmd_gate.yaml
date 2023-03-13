@@ -1,0 +1,43 @@
+/control/vehicle_cmd_gate:
+  ros__parameters:
+    check_external_emergency_heartbeat: false
+    diagnostic_updater:
+      period: 1.0
+    emergency_acceleration: -2.4
+    external_emergency_stop_heartbeat_timeout: 0.0
+    front_overhang: 1.0
+    left_overhang: 0.128
+    max_steer_angle: 0.7
+    nominal:
+      actual_steer_diff_lim: 1.0
+      lat_acc_lim: 5.0
+      lat_jerk_lim: 5.0
+      lon_acc_lim: 5.0
+      lon_jerk_lim: 5.0
+      vel_lim: 25.0
+    on_transition:
+      actual_steer_diff_lim: 0.05
+      lat_acc_lim: 1.2
+      lat_jerk_lim: 0.75
+      lon_acc_lim: 1.0
+      lon_jerk_lim: 0.5
+      vel_lim: 50.0
+    qos_overrides:
+      /parameter_events:
+        publisher:
+          depth: 1000
+          durability: volatile
+          history: keep_last
+          reliability: reliable
+    rear_overhang: 1.1
+    right_overhang: 0.128
+    stop_hold_acceleration: -1.5
+    system_emergency_heartbeat_timeout: 0.5
+    update_rate: 10.0
+    use_emergency_handling: false
+    use_sim_time: false
+    vehicle_height: 2.5
+    wheel_base: 2.79
+    wheel_radius: 0.383
+    wheel_tread: 1.64
+    wheel_width: 0.235

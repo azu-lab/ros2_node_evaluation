@@ -1,0 +1,3 @@
+output/object: merged_object
+input/object0: object0
+input/object1: object1

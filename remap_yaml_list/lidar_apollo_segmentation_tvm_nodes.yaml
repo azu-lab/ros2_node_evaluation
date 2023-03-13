@@ -1,0 +1,2 @@
+points_in: /sensing/lidar/pointcloud
+objects_out: labeled_clusters

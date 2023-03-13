@@ -1,0 +1,8 @@
+~/input/tl_state: traffic_signals
+~/output/traffic_light: traffic_signals/markers
+~/input/image: /camera/image_raw
+~/input/vector_map: /map/vector_map
+~/output/image: ~/debug/rois
+~/input/rough/rois: ~/rough/rois
+~/input/traffic_signals: ~/input/traffic_signals
+~/input/rois: ~/input/rois

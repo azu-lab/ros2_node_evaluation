@@ -1,0 +1,1 @@
+ros2 run velodyne_pointcloud cloud_node --ros-args --params-file sensing__lidar__top__velodyne_convert_node.yaml -r __ns:=/sensing/lidar/top -r __node:=velodyne_convert_node -r velodyne_points:=pointcloud_raw -r velodyne_points_ex:=pointcloud_raw_ex

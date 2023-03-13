@@ -1,0 +1,2 @@
+input: voxel_grid_downsample/pointcloud
+output: /output/pointcloud

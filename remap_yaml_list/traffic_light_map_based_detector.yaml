@@ -1,0 +1,4 @@
+~/output/rois: ~/output/rois
+~/input/vector_map: /map/vector_map
+~/input/route: /planning/mission_planning/route
+~/input/camera_info: /camera/camera_info

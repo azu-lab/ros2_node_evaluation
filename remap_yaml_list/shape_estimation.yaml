@@ -1,0 +1,2 @@
+objects: shape_estimated_objects
+input: labeled_clusters

@@ -1,0 +1,4 @@
+~/output/trajectory: /planning/scenario_planning/trajectory
+~/input/external_velocity_limit_mps: /planning/scenario_planning/max_velocity
+~/input/trajectory: /planning/scenario_planning/scenario_selector/trajectory
+~/output/current_velocity_limit_mps: /planning/scenario_planning/current_max_velocity

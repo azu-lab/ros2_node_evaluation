@@ -1,0 +1,2 @@
+input: downsampled/pointcloud
+output: outlier_filter/pointcloud

@@ -1,0 +1,2 @@
+output: voxel_grid_filtered/pointcloud
+input: map_filtered/pointcloud

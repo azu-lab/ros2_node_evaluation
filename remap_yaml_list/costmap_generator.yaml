@@ -1,0 +1,11 @@
+~/input/scenario: ~/input/scenario
+~/output/occupancy_grid: ~/output/occupancy_grid
+~/input/objects: /perception/object_recognition/objects
+~/input/vector_map: ~/input/vector_map
+~/input/vector_map: /map/vector_map
+~/output/grid_map: costmap_generator/grid_map
+~/input/objects: ~/input/objects
+~/output/grid_map: ~/output/grid_map
+~/input/scenario: /planning/scenario_planning/scenario
+~/output/occupancy_grid: costmap_generator/occupancy_grid
+~/input/points_no_ground: ~/input/points_no_ground

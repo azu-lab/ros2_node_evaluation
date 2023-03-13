@@ -1,0 +1,3 @@
+out/objects: rois
+out/image: rois
+in/image: /image_raw

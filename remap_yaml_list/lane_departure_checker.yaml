@@ -1,0 +1,5 @@
+~/input/lanelet_map_bin: /map/vector_map
+~/input/predicted_trajectory: /control/trajectory_follower/predicted_trajectory
+~/input/route: /planning/mission_planning/route
+~/input/reference_trajectory: /planning/scenario_planning/trajectory
+~/input/odometry: /localization/kinematic_state

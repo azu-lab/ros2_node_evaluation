@@ -1,0 +1,2 @@
+~/output/state_array: /system/v2x/virtual_traffic_light_states
+~/input/command_array: /planning/scenario_planning/status/infrastructure_commands

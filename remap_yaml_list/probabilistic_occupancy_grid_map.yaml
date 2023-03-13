@@ -1,0 +1,2 @@
+~/output/occupancy_grid_map: /perception/object_recognition/detection/validation/occupancy_grid_based/single_frame_occupancy_grid_map
+~/input/laserscan: /perception/occupancy_grid_map/virtual_scan/laserscan

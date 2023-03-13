@@ -1,0 +1,3 @@
+output/control_raw: lateral/control_cmd
+input/reference_trajectory: /planning/scenario_planning/trajectory
+input/current_odometry: /localization/kinematic_state

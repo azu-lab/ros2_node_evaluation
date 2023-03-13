@@ -1,0 +1,2 @@
+input: imu_raw
+output: imu_data

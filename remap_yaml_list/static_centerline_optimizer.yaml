@@ -1,0 +1,4 @@
+debug/raw_centerline: ~/debug/raw_centerline
+debug/unsafe_footprints: ~/debug/unsafe_footprints
+input_centerline: ~/input_centerline
+output_centerline: ~/output_centerline

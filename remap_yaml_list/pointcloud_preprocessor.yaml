@@ -1,0 +1,7 @@
+output: /sensing/lidar/top/ring_passthrough_filtered/pointcloud
+output: blockage_diag/pointcloud
+output: /pointcloud_filtered
+input: pointcloud_raw_ex
+output: /sensing/lidar/top/random_downsample_filter/pointcloud
+input: /velodyne_points_ex
+input: /sensing/lidar/top/pointcloud_raw

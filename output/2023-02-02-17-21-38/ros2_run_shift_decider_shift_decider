@@ -1,0 +1,1 @@
+ros2 run shift_decider shift_decider --ros-args --params-file control__shift_decider.yaml -r __ns:=/control -r __node:=shift_decider -r input/state:=/autoware/state -r output/gear_cmd:=/control/shift_decider/gear_cmd -r input/control_cmd:=/control/trajectory_follower/control_cmd

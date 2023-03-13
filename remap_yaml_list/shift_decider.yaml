@@ -1,0 +1,3 @@
+input/state: /autoware/state
+output/gear_cmd: /control/shift_decider/gear_cmd
+input/control_cmd: /control/trajectory_follower/control_cmd

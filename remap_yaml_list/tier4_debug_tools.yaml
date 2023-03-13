@@ -1,0 +1,3 @@
+~/input/vehicle_pose_with_covariance: /localization/pose_with_covariance
+~/input/reference_trajectory: /planning/scenario_planning/trajectory
+~/input/ground_truth_pose_with_covariance: /localization/pose_with_covariance

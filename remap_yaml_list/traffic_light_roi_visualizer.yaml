@@ -1,0 +1,8 @@
+~/input/rois: rois
+~/input/rough/rois: rough/rois
+~/input/traffic_signals: traffic_signals
+~/output/image/compressed: debug/rois/compressed
+~/input/image: /input/image
+~/output/image: debug/rois
+~/output/image/compressedDepth: debug/rois/compressedDepth
+~/output/image/theora: debug/rois/theora

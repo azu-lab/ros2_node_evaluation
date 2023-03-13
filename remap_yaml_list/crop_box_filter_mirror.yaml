@@ -1,0 +1,2 @@
+input: self_cropped/pointcloud_ex
+output: mirror_cropped/pointcloud_ex

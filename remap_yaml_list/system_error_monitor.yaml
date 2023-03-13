@@ -1,0 +1,7 @@
+~/input/autoware_state: /autoware/state
+~/input/control_mode: /vehicle/status/control_mode
+~/output/hazard_status: /system/emergency/hazard_status
+~/output/diagnostics_err: /diagnostics_err
+~/input/current_gate_mode: /control/current_gate_mode
+service/clear_emergency: /system/clear_emergency
+input/diag_array: /diagnostics_agg

@@ -1,0 +1,6 @@
+~/output/rois: rois
+~/output/rois: ~/output/rois
+~/input/rois: /traffic_light_map_based_detector/output/rois
+~/input/image: /input/image
+~/input/rois: rough/rois
+~/input/image: /image_raw

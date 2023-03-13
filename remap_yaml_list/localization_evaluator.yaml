@@ -1,0 +1,2 @@
+~/input/localization: /localization/kinematic_state
+~/input/localization/ref: /geometry_msgs/PoseWithCovarianceStampedGt

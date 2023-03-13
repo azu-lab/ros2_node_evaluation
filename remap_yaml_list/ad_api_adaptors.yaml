@@ -1,0 +1,4 @@
+~/input/waypoint: /planning/mission_planning/checkpoint
+~/initialpose: /initialpose
+~/fit_map_height: /localization/util/fit_map_height
+~/input/goal: /planning/mission_planning/goal

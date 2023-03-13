@@ -1,0 +1,2 @@
+output: outlier_filtered/pointcloud
+input: rectified/pointcloud_ex

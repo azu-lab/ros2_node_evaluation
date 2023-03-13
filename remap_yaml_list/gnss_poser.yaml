@@ -1,0 +1,5 @@
+gnss_pose: gnss_pose
+gnss_fixed: gnss_fixed
+gnss_pose_cov: gnss_pose_cov
+autoware_orientation: /autoware_orientation
+fix: /fix

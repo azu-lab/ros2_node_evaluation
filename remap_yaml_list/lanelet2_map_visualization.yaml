@@ -1,0 +1,2 @@
+input/lanelet2_map: vector_map
+output/lanelet2_map_marker: vector_map_marker

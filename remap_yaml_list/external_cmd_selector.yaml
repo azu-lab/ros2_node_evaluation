@@ -1,0 +1,15 @@
+~/input/local/heartbeat: /api/external/set/command/local/heartbeat
+~/input/remote/heartbeat: /api/external/set/command/remote/heartbeat
+~/output/turn_indicators_cmd: /external/selected/turn_indicators_cmd
+~/output/hazard_lights_cmd: /external/selected/hazard_lights_cmd
+~/input/remote/control_cmd: /api/external/set/command/remote/control
+~/input/local/control_cmd: /api/external/set/command/local/control
+~/output/control_cmd: /external/selected/external_control_cmd
+~/input/remote/turn_signal_cmd: /api/external/set/command/remote/turn_signal
+~/input/remote/shift_cmd: /api/external/set/command/remote/shift
+~/output/gear_cmd: /external/selected/gear_cmd
+~/service/select_external_command: ~/select_external_command
+~/input/local/shift_cmd: /api/external/set/command/local/shift
+~/output/current_selector_mode: ~/current_selector_mode
+~/output/heartbeat: /external/selected/heartbeat
+~/input/local/turn_signal_cmd: /api/external/set/command/local/turn_signal

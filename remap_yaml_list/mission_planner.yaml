@@ -1,0 +1,5 @@
+input/modified_goal: /planning/scenario_planning/modified_goal
+input/vector_map: /map/vector_map
+output/goal_pose: /planning/mission_planning/echo_back_goal_pose
+input/route: /planning/mission_planning/route
+debug/route_marker: /planning/mission_planning/route_marker

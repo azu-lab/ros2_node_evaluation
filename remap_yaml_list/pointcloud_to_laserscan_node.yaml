@@ -1,0 +1,5 @@
+~/input/pointcloud: /input/obstacle_pointcloud
+~/output/pointcloud: /output/pointcloud
+~/output/laserscan: /output/laserscan
+~/output/ray: /output/ray
+~/output/stixel: /output/stixel

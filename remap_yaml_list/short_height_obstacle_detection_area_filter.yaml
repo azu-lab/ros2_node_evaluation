@@ -1,0 +1,2 @@
+input: concatenated/pointcloud
+output: detection_area/pointcloud

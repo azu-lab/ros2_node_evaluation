@@ -1,0 +1,7 @@
+out/latest_external_control_cmd: /api/external/get/command/selected/control
+in/external_control_cmd: /external/selected/external_control_cmd
+in/current_gate_mode: /control/current_gate_mode
+in/emergency_stop: /external/selected/heartbeat
+out/control_cmd: /external/selected/control_cmd
+in/odometry: /localization/kinematic_state
+in/shift_cmd: /external/selected/gear_cmd

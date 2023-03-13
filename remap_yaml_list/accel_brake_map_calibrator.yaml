@@ -1,0 +1,4 @@
+~/input/update_map_dir: ~/update_map_dir
+~/input/velocity: /vehicle/status/velocity_status
+~/input/steer: /vehicle/status/steering_status
+~/input/actuation_status: /vehicle/status/actuation_status

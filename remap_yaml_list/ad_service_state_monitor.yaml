@@ -1,0 +1,10 @@
+output/autoware_engage: /autoware/engage
+output/autoware_state: /autoware/state
+input/autoware_engage: /api/autoware/get/engage
+input/modified_goal: /planning/scenario_planning/modified_goal
+input/odometry: /localization/kinematic_state
+input/control_mode: /vehicle/status/control_mode
+input/vector_map: /map/vector_map
+service/reset_route: /autoware/reset_route
+service/shutdown: /autoware/shutdown
+input/route: /planning/mission_planning/route

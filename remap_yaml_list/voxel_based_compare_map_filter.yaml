@@ -1,0 +1,3 @@
+map: /map/pointcloud_map
+input: /input_topic
+output: /output_topic

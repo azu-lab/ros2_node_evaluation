@@ -1,0 +1,6 @@
+input: clusters
+~/output/objects: objects
+~/input/pointcloud: /sensing/lidar/top/rectified/pointcloud
+output: fused_objects
+output: labeled_clusters
+input: objects

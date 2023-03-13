@@ -1,0 +1,11 @@
+is_completed: is_completed
+~/input/route: input_route
+~/output/trajectory: output_trajectory
+~/input/occupancy_grid: costmap_generator/occupancy_grid
+is_completed: /planning/scenario_planning/parking/is_completed
+~/input/scenario: input_scenario
+~/output/trajectory: /planning/scenario_planning/parking/trajectory
+~/input/route: /planning/mission_planning/route
+~/input/scenario: /planning/scenario_planning/scenario
+~/input/occupancy_grid: input_occupancy_grid
+~/input/odometry: /localization/kinematic_state

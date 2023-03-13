@@ -1,0 +1,4 @@
+~/input/raw_pointcloud: /input/raw_pointcloud
+~/input/obstacle_pointcloud: /input/obstacle_pointcloud
+~/input/laserscan: /output/laserscan
+~/output/occupancy_grid_map: /output

@@ -1,0 +1,5 @@
+~/output/path: output/path
+~/input/path: input/path
+~/input/objects: /perception/object_recognition/objects
+~/output/path: obstacle_avoidance_planner/trajectory
+~/input/path: /input_path_topic
