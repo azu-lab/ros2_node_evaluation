@@ -65,9 +65,9 @@ def visualize(callbackname, latency_bln, frequency_bln, period_bln, app, datepat
         plot = Plot.create_frequency_timeseries_plot(get_callback)
         # callback_df = plot.to_dataframe()
         # print(callback_df)
-        if os.getenv('LD_PRELOAD'):
-            del os.environ['LD_PRELOAD']
-        plot.show()
+        # if os.getenv('LD_PRELOAD'):
+        #     del os.environ['LD_PRELOAD']
+        # plot.show()
         figure_path = datepath + '/frequency_' + now
         figure_html = figure_path + '.html'
         plot.save(figure_html)
@@ -95,9 +95,9 @@ def visualize(callbackname, latency_bln, frequency_bln, period_bln, app, datepat
         plot = Plot.create_period_timeseries_plot(get_callback)
         # callback_df = plot.to_dataframe()
         # print(callback_df)
-        if os.getenv('LD_PRELOAD'):
-            del os.environ['LD_PRELOAD']
-        plot.show()
+        # if os.getenv('LD_PRELOAD'):
+        #     del os.environ['LD_PRELOAD']
+        # plot.show()
         figure_path = datepath + '/period_' + now
         figure_html = figure_path + '.html'
         plot.save(figure_html)
