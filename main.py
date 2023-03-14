@@ -380,8 +380,8 @@ class UpperFrame_tab_two(tk.Frame):
 
         def genarate_app():
             self.arcitecturefile = self.architecturefile_entry.get()
-            print(self.arcitecturefile)
-            print(type(self.arcitecturefile))
+            # print(self.arcitecturefile)
+            # print(type(self.arcitecturefile))
             self.tracedata = self.tracedata_entry.get()
             self.arch = Architecture('yaml', self.arcitecturefile)
             self.lttng = Lttng(self.tracedata)
@@ -419,6 +419,11 @@ class UpperFrame_tab_two(tk.Frame):
                 node = self.app.get_node(value)
                 get_callback_list = node.callback_names
 
+            num_list = len(get_callback_list)
+            if num_list < 9:
+                canvas_height = 23 * num_list
+            elif num_list >= 9:
+                canvas_height = 200
 
             self.callback_window = tk.Toplevel()
             self.callback_window.geometry("530x270")
@@ -433,14 +438,15 @@ class UpperFrame_tab_two(tk.Frame):
             alldeleteButton = tk.Button(button_frame, text="Select_Clear", command=allDelete_click)
             alldeleteButton.grid(row=0, column=1,sticky=tk.W)
 
-            canvas = tk.Canvas(self.callback_window,width=500,height=200,bg='white')
+            canvas = tk.Canvas(self.callback_window,width=500,height=canvas_height,bg='white')
             canvas.grid(row=1,column=0)
 
             ybar = tk.Scrollbar(self.callback_window,orient=tk.VERTICAL)
             ybar.grid(row=1,column=1,sticky=tk.N + tk.S + tk.W)
             ybar.config(command=canvas.yview)
             canvas.config(yscrollcommand=ybar.set)
-            canvas.config(scrollregion=(0, 0, 700, 600))
+            canvas_height = 23 * num_list
+            canvas.config(scrollregion=(0, 0, 700, canvas_height))
 
             canvas_frame = tk.Frame(canvas,bg='white')
 
