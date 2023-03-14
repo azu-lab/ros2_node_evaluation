@@ -57,6 +57,8 @@ $ python3 main.py
 
 ※Requires a bagfile that contains the input topics of the nodes to be evaluated in advance.<br>
 
-Here is a [bag file](https://drive.google.com/file/d/1cLoHWzQg_FMSKjitQA6Xdf4vHOku7xHR/view?usp=share_link) that contains a variety of topics. Please check to see if the bag file contains the topics you need.
+Here is a [bag file](https://drive.google.com/file/d/1cLoHWzQg_FMSKjitQA6Xdf4vHOku7xHR/view?usp=share_link) that contains a variety of topics. Please check to see if the bag file contains the topics you need.<br>
+
+Please check [this document](https://docs.google.com/presentation/d/1L7C62m6CK4r6A1pKWUVMIcuKu6eDZ8rS/edit?usp=share_link&ouid=111700719770045929225&rtpof=true&sd=true) for detailed instructions on how to use the GUI.
 
 
