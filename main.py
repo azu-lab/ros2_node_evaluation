@@ -745,12 +745,18 @@ def click_close():
     global i_click_close
     i_click_close = 1
 
+    # ret1 = tk.messagebox.askyesno(
+    #     title = "End Confirmation",
+    #     message = "Do you really want to close it?")
+
+    # if ret1 == True:
+
     # 終了確認のメッセージ表示
-    ret = tk.messagebox.askyesno(
+    ret2 = tk.messagebox.askyesno(
         title = "End Confirmation",
         message = "Save folder?")
 
-    if ret == True:
+    if ret2 == True:
         # 「yes」がクリックされたとき
         pass
     else:

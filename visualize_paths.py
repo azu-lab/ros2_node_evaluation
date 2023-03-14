@@ -14,10 +14,10 @@ def visualize(message_flow_bln, chain_latency_bln, response_time_bln, app, datep
     if message_flow_bln:
         export_path = os.getenv('LD_PRELOAD')
         path = app.get_path('target_path')
-        if os.getenv('LD_PRELOAD'):
-            del os.environ['LD_PRELOAD']
+        # if os.getenv('LD_PRELOAD'):
+        #     del os.environ['LD_PRELOAD']
         message_flow(path, granularity='node', lstrip_s=1, rstrip_s=1)
-        os.environ['LD_PRELOAD'] = export_path
+        # os.environ['LD_PRELOAD'] = export_path
         # figure_path = datepath + '/message_flow_' + now
         # figure_html = figure_path + '.html'
         # plot.save(figure_html)
@@ -28,10 +28,10 @@ def visualize(message_flow_bln, chain_latency_bln, response_time_bln, app, datep
     if chain_latency_bln:
         export_path = os.getenv('LD_PRELOAD')
         path = app.get_path('target_path')
-        if os.getenv('LD_PRELOAD'):
-            del os.environ['LD_PRELOAD']
+        # if os.getenv('LD_PRELOAD'):
+        #     del os.environ['LD_PRELOAD']
         chain_latency(path, granularity='node', lstrip_s=1, rstrip_s=1)
-        os.environ['LD_PRELOAD'] = export_path
+        # os.environ['LD_PRELOAD'] = export_path
         # figure_path = datepath + '/chain_latency_' + now
         # figure_html = figure_path + '.html'
         # plot.save(figure_html)
@@ -46,10 +46,10 @@ def visualize(message_flow_bln, chain_latency_bln, response_time_bln, app, datep
 
         # plot best-to-worst case
         plot = Plot.create_response_time_histogram_plot(path)
-        if os.getenv('LD_PRELOAD'):
-            del os.environ['LD_PRELOAD']
+        # if os.getenv('LD_PRELOAD'):
+        #     del os.environ['LD_PRELOAD']
         plot.show()
-        os.environ['LD_PRELOAD'] = export_path
+        # os.environ['LD_PRELOAD'] = export_path
         # figure_path = datepath + '/response_time_' + now
         # figure_html = figure_path + '.html'
         # plot.save(figure_html)
