@@ -15,8 +15,7 @@ def visualize(callbackname, latency_bln, frequency_bln, period_bln, app, datepat
 
 
     if latency_bln:
-        export_path = os.getenv('LD_PRELOAD')
-        print(export_path)
+        # export_path = os.getenv('LD_PRELOAD')
         get_callback = []
         callbackname_list = callbackname.split(',')
         for re_callbackname_list in callbackname_list:
@@ -56,7 +55,7 @@ def visualize(callbackname, latency_bln, frequency_bln, period_bln, app, datepat
         # print(export)
 
     if frequency_bln:
-        export_path = os.getenv('LD_PRELOAD')
+        # export_path = os.getenv('LD_PRELOAD')
         get_callback = []
         callbackname_list = callbackname.split(',')
         for re_callbackname_list in callbackname_list:
@@ -83,10 +82,9 @@ def visualize(callbackname, latency_bln, frequency_bln, period_bln, app, datepat
         # figure_svg = figure_path + '.svg'
         # export_svg(fig, filename = figure_svg)
 
-        os.environ['LD_PRELOAD'] = export_path
-
+        # os.environ['LD_PRELOAD'] = export_path
     if period_bln:
-        export_path = os.getenv('LD_PRELOAD')
+        # export_path = os.getenv('LD_PRELOAD')
         get_callback = []
         callbackname_list = callbackname.split(',')
         for re_callbackname_list in callbackname_list:
@@ -113,4 +111,4 @@ def visualize(callbackname, latency_bln, frequency_bln, period_bln, app, datepat
         # figure_svg = figure_path + '.svg'
         # export_svg(fig, filename = figure_svg)
 
-        os.environ['LD_PRELOAD'] = export_path
+        # os.environ['LD_PRELOAD'] = export_path

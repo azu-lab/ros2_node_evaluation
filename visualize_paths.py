@@ -14,7 +14,7 @@ import os
 def visualize(message_flow_bln, chain_latency_bln, response_time_bln, app, datepath, now):
 
     if message_flow_bln:
-        export_path = os.getenv('LD_PRELOAD')
+        # export_path = os.getenv('LD_PRELOAD')
         path = app.get_path('target_path')
         # if os.getenv('LD_PRELOAD'):
         #     del os.environ['LD_PRELOAD']
@@ -32,7 +32,7 @@ def visualize(message_flow_bln, chain_latency_bln, response_time_bln, app, datep
         # export_svg(fig, filename = figure_svg)
 
     if chain_latency_bln:
-        export_path = os.getenv('LD_PRELOAD')
+        # export_path = os.getenv('LD_PRELOAD')
         path = app.get_path('target_path')
         # if os.getenv('LD_PRELOAD'):
         #     del os.environ['LD_PRELOAD']
@@ -47,7 +47,7 @@ def visualize(message_flow_bln, chain_latency_bln, response_time_bln, app, datep
 
 
     if response_time_bln:
-        export_path = os.getenv('LD_PRELOAD')
+        # export_path = os.getenv('LD_PRELOAD')
         path = app.get_path('target_path')
         # plot best-to-worst case
         plot = Plot.create_response_time_histogram_plot(path)
